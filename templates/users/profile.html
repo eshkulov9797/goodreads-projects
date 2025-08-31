@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile pages{% endblock %}
+
+{% block content %}
+<body class="bg-light">
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+
+        <div class="card shadow-sm">
+          <div class="card-header text-center bg-primary text-white">
+            <h4 class="mb-0">User Profile</h4>
+          </div>
+          <div class="card-body">
+            <p><strong>Username:</strong> {{user.username}}</p>
+            <p><strong>First name:</strong> {{user.first_name}}</p>
+            <p><strong>Last name:</strong> {{user.last_name}}</p>
+            <p><strong>Email:</strong> {{user.email}}</p>
+            <p><strong>Password:</strong> **************</p>
+          </div>
+          <div class="card-footer text-center">
+            <a href="#" class="btn btn-outline-primary btn-sm">Edit Profile</a>
+            <a href="#" class="btn btn-outline-secondary btn-sm">Change Password</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+{% endblock %}

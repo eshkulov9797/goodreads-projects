@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login title</title>
-</head>
-<body>
-<h1>
-  Login Web page
-</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Login title{% endblock title %}
+
+{% block content %}
+ <form method="post">{% csrf_token %}
+    {{ login_form.as_p }}
+    <button>Login</button>
+    <span> No account? Then, <a href="{% url 'users:register_page' %}">get registered</a></span>
+</form>
+
+{% endblock %}

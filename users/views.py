@@ -1,12 +1,11 @@
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib import messages
 
-from users.forms import UserCreateForm
+from users.forms import UserCreateForm, UserUpdateForm
 
 
 # Create your views here.
@@ -58,3 +57,19 @@ class LogoutView(LoginRequiredMixin, View):
         logout(request)
         messages.info(request, 'Siz muvaffaqiyatli logout qildingiz')
         return redirect('landing')
+
+class ProfileUpdateView(LoginRequiredMixin, View):
+    def get(self, request):
+        user_update_form = UserUpdateForm(instance=request.user)
+        return render(request, 'users/profile_editor.html', {'forms':user_update_form})
+
+    def post(self, request):
+        user_update_form = UserUpdateForm(instance=request.user,
+                                          data=request.POST,
+                                          files=request.FILES)
+
+        if user_update_form.is_valid():
+            user_update_form.save()
+            redirect('users/profile_page')
+
+        return render(request, 'users/profile_editor.html', {'forms':user_update_form})

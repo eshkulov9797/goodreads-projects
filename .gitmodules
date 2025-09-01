@@ -1,0 +1,3 @@
+[submodule "goodreads-projects"]
+	path = goodreads-projects
+	url = https://github.com/eshkulov9797/goodreads-projects.git

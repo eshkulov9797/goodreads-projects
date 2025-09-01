@@ -1,8 +1,25 @@
 {% extends 'base.html' %}
 
-{% block title %}Book Detail Page{% endblock title %}
+{% block title %}{{ book.title }} | Book Detail{% endblock title %}
+
 {% block content %}
-{{ book.title}}
-<br>
-{{ book.description }}
+<div class="container mt-5">
+    <div class="card shadow-sm border-0">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ book.cover_picture.url }}" alt="{{ book.title }}" class="img-fluid rounded-start object-fit-cover h-100">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title">{{ book.title }}</h3>
+                    <p class="card-text text-muted" style="font-size: 1rem;">
+                        {{ book.description }}
+                    </p>
+
+                    <a href="{% url 'books:list' %}" class="btn btn-outline-secondary mt-3">← Back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

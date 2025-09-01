@@ -1,10 +1,35 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Register{% endblock title %}
 
 {% block content %}
-<form method="post" action="{% url 'users:register_page' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-<button type="submit">Submit</button>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
 
-</form>
-    {% endblock %}
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">👤 Register</h3>
+
+                    <form method="post" action="{% url 'users:register_page' %}">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Create Account</button>
+                        </div>
+                    </form>
+
+                    <div class="text-center mt-3">
+                        <small>Already have an account?
+                            <a href="{% url 'users:login_page' %}">Login here</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

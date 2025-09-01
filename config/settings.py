@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
-from django.conf.global_settings import TEMPLATES, LOGIN_URL, AUTH_USER_MODEL, MEDIA_ROOT, MEDIA_URL
+from django.conf.global_settings import TEMPLATES, LOGIN_URL, AUTH_USER_MODEL, MEDIA_ROOT, MEDIA_URL, STATICFILES_DIRS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,7 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'books',
     'users',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -127,6 +133,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+
 MEDIA_ROOT = 'media-files'
 MEDIA_URL = '/media/'
 # Default primary key field type
